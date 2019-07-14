@@ -1,0 +1,32 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.EventSystems;
+
+public class CardScr : MonoBehaviour, IBeginDragHandler,IDragHandler,IEndDragHandler {
+
+	Camera MainCamera;
+
+	void Awake ()
+	{
+		MainCamera = Camera.allCameras[0];
+	}
+
+	public void OnBeginDrag (PointerEventData eventData)
+	{
+
+	}
+
+	public void OnDrag (PointerEventData eventData)
+	{
+		Vector3 newPos = MainCamera.ScreenToWorldPoint(eventData.position);
+		newPos.z = 0;
+		transform.position = newPos;
+	}
+
+	public void OnEndDrag (PointerEventData eventData)
+	{
+
+	}
+
+}
